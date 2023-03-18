@@ -70,7 +70,7 @@ const Login = () => {
                     }
                 <div className='py-10 px-16'>
                 <h1 className='text-2xl font-medium text-primary mt-4 mb-12 text-center'>
-                    Log in to your account 🔐
+                    Log in to your account
                 </h1>
 
                 <form onSubmit={handleFormSubmit}>
