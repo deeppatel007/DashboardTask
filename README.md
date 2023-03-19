@@ -34,6 +34,7 @@ password: admin123
 
 ## Deployment
 deployed on netlify
+Link: https://label-dashboard.netlify.app/
 
 
 
