@@ -55,7 +55,7 @@ const Dashboard = (props) => {
                                 <div><h1 class="pt-0"><span class="font-bold">Lable : </span>{data.lable !== "None" ? data.lable : "No Lable Added"}</h1>
                                     <div class="pt-2">
                                         <label for="filter" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Add Lable To Image</label>
-                                        <select id="filter" class="w-28 border text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" onChange={(e) => { changeLable(e) }}>
+                                        <select id="filter" class=" border text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" style={{width:'100px'}} onChange={(e) => { changeLable(e) }}>
                                             {
                                                 lables.map((lable, index) => {
                                                     return (<option name={data.name} value={lable} >{lable}</option>)
@@ -78,7 +78,7 @@ const Dashboard = (props) => {
                 <div class="grid grid-cols-2 gap-4">
                     <div>
                         <label for="filter" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white pt-4">Apply a filter</label>
-                        <select id="filter" class="w-28 h-12 border text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" onChange={(e) => { handleFilter(e) }} >
+                        <select id="filter" class=" h-12 border text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" style={{width:'100px'}} onChange={(e) => { handleFilter(e) }} >
                             {
                                 lables.map((lable, index) => {
                                     return (<option value={lable} >{lable}</option>)

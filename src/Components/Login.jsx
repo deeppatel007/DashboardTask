@@ -85,7 +85,7 @@ const Login = () => {
                                     <label htmlFor='username'>Username</label>
                                     <input
                                         type='text'
-                                        className={`w-full p-2 text-primary border rounded-md outline-none text-sm transition duration-150 ease-in-out mb-4`}
+                                        className={`w-full p-2 text-primary border rounded-md outline-none text-sm   mb-4`}
                                         id='username'
                                         placeholder='Your Username'
                                     />
@@ -94,7 +94,7 @@ const Login = () => {
                                     <label htmlFor='password'>Password</label>
                                     <input
                                         type='password'
-                                        className={`w-full p-2 text-primary border rounded-md outline-none text-sm transition duration-150 ease-in-out mb-4`}
+                                        className={`w-full p-2 text-primary border rounded-md outline-none text-sm   mb-4`}
                                         id='password'
                                         placeholder='Your Password'
                                     />
