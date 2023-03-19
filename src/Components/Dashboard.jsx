@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 const Dashboard = (props) => {
     const [products, setProducts] = useState(PRODUCTS)
@@ -18,10 +18,10 @@ const Dashboard = (props) => {
         const value = e.target.value;
 
         const pro = [];
-        if(value==="None"){ 
+        if (value === "None") {
             setFilterProduct(products)
         }
-        else{
+        else {
             for (let m in products) {
                 if (products[m].lable === value) {
                     pro.push(products[m]);
@@ -29,14 +29,12 @@ const Dashboard = (props) => {
             }
             setFilterProduct(pro)
         }
-        
+
     }
     const changeLable = (e) => {
         const name = e.target[0].getAttribute("name");
         const value = e.target.value;
         let pro = [...products]
-        console.log(name)
-        console.log("patel")
         for (let m in pro) {
             if (pro[m].name === name) {
                 pro[m].lable = value;
@@ -47,24 +45,24 @@ const Dashboard = (props) => {
     }
     return (
 
-        <>
-            <div class="w-1/2 float-left">
+        <div >
+            <div class="w-1/3 float-left">
                 {
                     filterProduct.map((data, ind) => {
                         return (
                             <div class="grid grid-cols-2 gap-4 border-2 m-4 shadow-md" >
                                 <img class="h-64 w-64" src={data.url} alt="" />
-                                <div><h1 class="pt-0">Lable:{data.lable!=="None"? data.lable: "No Lable Added"}</h1>
-                                <div class="pt-2">
-                                    <label for="countries" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Add Lable To Image</label>
-                                    <select id="countries" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 w-24" onChange={(e) => { changeLable(e) }}>
-                                        {
-                                            lables.map((lable, index) => {
-                                                return (<option name={data.name} value={lable} >{lable}</option>)
-                                            })
-                                        }
-                                    </select>
-                                </div>
+                                <div><h1 class="pt-0"><span class="font-bold">Lable : </span>{data.lable !== "None" ? data.lable : "No Lable Added"}</h1>
+                                    <div class="pt-2">
+                                        <label for="filter" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Add Lable To Image</label>
+                                        <select id="filter" class="w-28 border text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" onChange={(e) => { changeLable(e) }}>
+                                            {
+                                                lables.map((lable, index) => {
+                                                    return (<option name={data.name} value={lable} >{lable}</option>)
+                                                })
+                                            }
+                                        </select>
+                                    </div>
                                 </div>
 
                             </div>
@@ -75,32 +73,39 @@ const Dashboard = (props) => {
                 }
             </div>
 
-            <div class="float-left">
-                <label for="countries" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Select a filter</label>
-                <select id="countries" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" onChange={(e) => { handleFilter(e) }} >
-                    {
-                        lables.map((lable, index) => {
-                            return (<option value={lable} >{lable}</option>)
-                        })
-                    }
+            <div class="float-left w-96">
 
-                </select>
-                {props.IsAdmin?
-                <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
-                    <label class="block text-gray-700 text-sm font-bold mb-2" for="lablename">
-                        Add new lable
-                    </label>
-                    <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="Lable Name" value={newLableName} onChange={(e) => { handleInput(e) }} />
-                    <div class="flex items-center justify-between pt-4">
-                        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button" onClick={(e) => { addNewLable(e) }}>
-                            Add label
-                        </button>
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label for="filter" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white pt-4">Apply a filter</label>
+                        <select id="filter" class="w-28 h-12 border text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" onChange={(e) => { handleFilter(e) }} >
+                            {
+                                lables.map((lable, index) => {
+                                    return (<option value={lable} >{lable}</option>)
+                                })
+                            }
+
+                        </select>
                     </div>
-                </form>
-                :<></>
-                }
+                    {props.IsAdmin ?
+                        <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 w-80 mt-4">
+                            <label class="block text-gray-700 text-sm font-bold mb-2" for="lablename">
+                                Add new lable
+                            </label>
+                            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="Lable Name" value={newLableName} onChange={(e) => { handleInput(e) }} />
+                            <div class="flex items-center justify-between pt-4">
+                                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button" onClick={(e) => { addNewLable(e) }}>
+                                    Add label
+                                </button>
+                            </div>
+
+                        </form>
+
+                        : <></>
+                    }
+                </div>
             </div>
-        </>
+        </div>
     )
 }
 
